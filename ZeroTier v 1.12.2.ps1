@@ -14,6 +14,8 @@ $jsonBody = @{
  "
  } | ConvertTo-Json
 
- Invoke-RestMethod -Uri $url -Method Post -Body $jsonBody -ContentType "application/json"
+ Invoke-RestMethod -Uri $url -Method Post -Body $jsonBody -ContentType "application/json";
+
+exit
  
 
