@@ -59,4 +59,6 @@ echo "Instalacao do VNC bem sucedida"  > "$env:C:\Program Files\VNC Senha.txt"
 echo "Senha $a" >> "$env:C:\Program Files\VNC Senha.txt"
 $wshell = New-Object -ComObject Wscript.Shell
 
+rm "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\UltraVNC"
+
 exit
