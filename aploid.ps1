@@ -61,4 +61,4 @@ $wshell = New-Object -ComObject Wscript.Shell
 
 Remove-Item -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\UltraVNC" -Recurse -Force
 
-exit
+
